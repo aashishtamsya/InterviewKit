@@ -56,6 +56,26 @@ class LinkedList {
     }
     prev?.next = current?.next
   }
+  
+  static func reverse(_ node: Node?) -> String {
+    var output = ""
+    if node == nil {
+      return output
+    }
+    output += reverse(node?.next)
+    output += "\(node!.value) "
+    return output
+  }
+  
+  func reverse(_ node: Node?) -> String {
+    var output = ""
+    if node == nil {
+      return output
+    }
+    output += reverse(node?.next)
+    output += "\(node!.value) "
+    return output
+  }
 }
 
 
@@ -85,3 +105,5 @@ list.insert(7)
 list.display()
 list.delete(7) // will remove first occurence of the value = 7
 list.display()
+
+print(LinkedList.reverse(list.head))
