@@ -76,6 +76,32 @@ class LinkedList {
     output += "\(node!.value) "
     return output
   }
+  
+  func findMiddleWithTwoPointers() -> Int? {
+    var c = head
+    var t = head
+    while t?.next != nil {
+      t = t?.next?.next
+      c = c?.next
+    }
+    print("\(c!.value) 🍠")
+    return c?.value
+  }
+  
+  func findMiddleWithCounter() -> Int? {
+    var current = head
+    var counter = 0
+    var mid = head
+    while current?.next != nil {
+      current = current?.next
+      counter += 1
+      if counter % 2 == 1 {
+        mid = mid?.next
+      }
+    }
+    print("\(mid!.value) 🍠")
+    return mid?.value
+  }
 }
 
 
@@ -99,7 +125,7 @@ list.delete(8)
 list.display()
 list.delete(5)
 list.display()
-list.insert(4)
+list.insert(99)
 list.insert(6)
 list.insert(7)
 list.display()
@@ -107,3 +133,10 @@ list.delete(7) // will remove first occurence of the value = 7
 list.display()
 
 print(LinkedList.reverse(list.head))
+
+list.insert(11)
+list.display()
+print("findMiddleWithTwoPointers 🔥")
+list.findMiddleWithTwoPointers()
+print("findMiddleWithCounter 🔥")
+list.findMiddleWithCounter()
