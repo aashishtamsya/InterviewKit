@@ -43,7 +43,7 @@ class LinkedList {
   }
   
   func delete(_ value: Int) {
-    print("❌ deleting \(value)")
+    print("❌ deleting value: \(value)")
     guard head?.value != value else {
       head = head?.next
       return
@@ -53,6 +53,23 @@ class LinkedList {
     while current != nil && current?.value != value {
       prev = current
       current = current?.next
+    }
+    prev?.next = current?.next
+  }
+  
+  func delete(at position: UInt) {
+    print("❌ deleting at position: \(position)")
+    if position == 0 {
+      head = head?.next
+      return
+    }
+    var index = 0
+    var current = head
+    var prev = head
+    while current?.next != nil && index < position {
+      prev = current
+      current = current?.next
+      index += 1
     }
     prev?.next = current?.next
   }
@@ -140,3 +157,23 @@ print("findMiddleWithTwoPointers 🔥")
 list.findMiddleWithTwoPointers()
 print("findMiddleWithCounter 🔥")
 list.findMiddleWithCounter()
+
+let demo = LinkedList()
+demo.insert(1)
+demo.insert(2)
+demo.insert(3)
+demo.insert(4)
+demo.insert(5)
+
+demo.display()
+//demo.delete(at: 0)
+demo.delete(at: 2)
+demo.display()
+demo.delete(at: 3)
+demo.display()
+demo.delete(at: 1)
+demo.display()
+demo.delete(at: 1)
+demo.display()
+demo.delete(at: 5)
+demo.display()
