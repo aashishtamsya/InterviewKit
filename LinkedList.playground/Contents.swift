@@ -42,6 +42,23 @@ class LinkedList {
     current?.next = Node(value)
   }
   
+  func insert(_ value: Int, at position: UInt) {
+    print("✅ inserting at position: \(position)")
+    if position == 0 {
+      head = Node(value, next: head)
+      return
+    }
+    var index = 0
+    var prev = head
+    var current = head
+    while index < position {
+      prev = current
+      current = current?.next
+      index += 1
+    }
+    prev?.next = Node(value, next: current)
+  }
+  
   func delete(_ value: Int) {
     print("❌ deleting value: \(value)")
     guard head?.value != value else {
@@ -166,14 +183,21 @@ demo.insert(4)
 demo.insert(5)
 
 demo.display()
-//demo.delete(at: 0)
-demo.delete(at: 2)
+//demo.delete(at: 2)
+//demo.display()
+//demo.delete(at: 3)
+//demo.display()
+//demo.delete(at: 1)
+//demo.display()
+//demo.delete(at: 1)
+//demo.display()
+//demo.delete(at: 5)
+//demo.display()
+
+demo.insert(98, at: 0)
+demo.insert(32, at: 0)
 demo.display()
-demo.delete(at: 3)
+demo.insert(44, at: 99)
 demo.display()
-demo.delete(at: 1)
-demo.display()
-demo.delete(at: 1)
-demo.display()
-demo.delete(at: 5)
+demo.insert(77, at: 7)
 demo.display()
