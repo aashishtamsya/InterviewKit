@@ -16,7 +16,7 @@ class LinkedList {
   // Linked List Traversal
   func display() {
     guard head != nil else {
-      print("Empty List")
+      print("Empty List ‼️")
       return
     }
     var output = ""
@@ -89,6 +89,12 @@ class LinkedList {
       index += 1
     }
     prev?.next = current?.next
+  }
+  
+  func deleteList() {
+    print("📣 Deleting Linked List.")
+    head = nil
+    print("Linked List deleted. ❎")
   }
   
   static func reverse(_ node: Node?) -> String {
@@ -200,4 +206,7 @@ demo.display()
 demo.insert(44, at: 99)
 demo.display()
 demo.insert(77, at: 7)
+demo.display()
+
+demo.deleteList()
 demo.display()
